@@ -1,6 +1,6 @@
-#import <Message/MVMailBundle.h>
+#import "MVMailBundle-Base.h"
 
 
-@interface MVMailBundle___PROJECTNAME___ : MVMailBundle
+@interface MVMailBundle___PROJECTNAME___ : MVMailBundleBase
 
 @end
