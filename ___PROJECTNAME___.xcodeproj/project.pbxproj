@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		B028AEE211CEB818006786F7 /* ___PROJECTNAME___.dmg */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B028AEF511CEB866006786F7 /* Build configuration list for PBXAggregateTarget "___PROJECTNAME___.dmg" */;
+			buildPhases = (
+				B028AF0411CEB907006786F7 /* Create DMG */,
+			);
+			dependencies = (
+			);
+			name = "___PROJECTNAME___.dmg";
+			productName = dmg;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		B0442D7D11CA441300268007 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0442D7C11CA441300268007 /* AppKit.framework */; };
 		B04A135111CE5B4500E5184C /* MVMailBundle-Base.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A135011CE5B4500E5184C /* MVMailBundle-Base.m */; };
@@ -128,6 +142,7 @@
 			projectRoot = "";
 			targets = (
 				8D5B49AC048680CD000E48DA /* ___PROJECTNAME___.mailbundle */,
+				B028AEE211CEB818006786F7 /* ___PROJECTNAME___.dmg */,
 			);
 		};
 /* End PBXProject section */
@@ -147,6 +162,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/Developer/Tools/SetFile -a B \"$TARGET_BUILD_DIR/$PRODUCT_NAME.$WRAPPER_EXTENSION\"\n";
+		};
+		B028AF0411CEB907006786F7 /* Create DMG */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Create DMG";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"$TARGET_BUILD_DIR\"\n\nmkdir \"tmp\"\n\nmv \"$PRODUCT_NAME.$WRAPPER_EXTENSION\" tmp/\n\nrm -f \"$PRODUCT_NAME-$CURRENT_PROJECT_VERSION.dmg\"\nhdiutil create \"$PRODUCT_NAME-$CURRENT_PROJECT_VERSION.dmg\" \\\n\t-volname \"$PRODUCT_NAME $CURRENT_PROJECT_VERSION\" \\\n\t-fs HFS+ -srcfolder \"tmp\"\n\nmv tmp/* .\n\nrmdir \"tmp\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -171,19 +200,25 @@
 					x86_64,
 				);
 				BUNDLE_LOADER = /Applications/Mail.app/Contents/MacOS/Mail;
-				CURRENT_PROJECT_VERSION = 0.1;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_PREFIX_HEADER = Classes/Prefix.pch;
 				INFOPLIST_FILE = Resources/Info.plist;
+			};
+			name = Release;
+		};
+		1DEB914008733D840010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 0.1;
 				PRODUCT_NAME = "___PROJECTNAME___";
 				WRAPPER_EXTENSION = mailbundle;
 			};
 			name = Release;
 		};
-		1DEB914008733D840010E9CD /* Release */ = {
+		B028AEE311CEB818006786F7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 			};
@@ -204,6 +239,14 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB914008733D840010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B028AEF511CEB866006786F7 /* Build configuration list for PBXAggregateTarget "___PROJECTNAME___.dmg" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B028AEE311CEB818006786F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

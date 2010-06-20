@@ -23,4 +23,3 @@ Todo:
 -----
 - Default swizzling stuff
 - Installer
-- Automatic DMG creation
