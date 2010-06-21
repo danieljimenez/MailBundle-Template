@@ -11,15 +11,7 @@ Installation:
 - Move the entire folder to `/Developer/Library/Xcode/Project Templates/Application Plug-In/`.
 - Create a new Xcode project based on this template.
 
-Notes:
-------
-To enable MailBundles on Snow Leopard, execute:
-
-- `defaults write com.apple.mail EnableBundles -bool true`
-- `defaults write com.apple.mail BundleCompatibilityVersion -int 4`
-
 
 Todo:
 -----
 - Default swizzling stuff
-- Installer
