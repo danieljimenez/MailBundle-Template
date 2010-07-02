@@ -18,16 +18,16 @@
 			name = "___PROJECTNAME___.dmg";
 			productName = dmg;
 		};
-		B09CFB8211CF480B0095DA83 /* Install.app */ = {
+		B0C20B4F11DE050000A925AB /* ___PROJECTNAME___.pkg */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = B09CFB8611CF48720095DA83 /* Build configuration list for PBXAggregateTarget "Install.app" */;
+			buildConfigurationList = B0C20B5111DE050000A925AB /* Build configuration list for PBXAggregateTarget "___PROJECTNAME___.pkg" */;
 			buildPhases = (
-				B09CFB8111CF480B0095DA83 /* ShellScript */,
+				B0C20B5011DE050000A925AB /* Create Package */,
 			);
 			dependencies = (
 			);
-			name = Install.app;
-			productName = Installer;
+			name = "___PROJECTNAME___.pkg";
+			productName = pkg;
 		};
 /* End PBXAggregateTarget section */
 
@@ -48,7 +48,6 @@
 		B096DAC011CE4C980019A5CF /* MVMailBundle-___PROJECTNAME___.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MVMailBundle-___PROJECTNAME___.m"; sourceTree = "<group>"; };
 		B0C163C911CB82BF00B6B512 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		B0E275B311CE4CC5000D2AAD /* ___PROJECTNAME___.mailbundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "___PROJECTNAME___.mailbundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0F151C811CED82D00302B2E /* Install.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; name = Install.applescript; path = Resources/Install.applescript; sourceTree = "<group>"; };
 		B0FCD88011CE55C20093744D /* Message.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Message.framework; path = Frameworks/Message.framework; sourceTree = "<group>"; };
 		B0FCD8B611CE578D0093744D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,7 +91,6 @@
 			isa = PBXGroup;
 			children = (
 				B0FCD8B611CE578D0093744D /* Info.plist */,
-				B0F151C811CED82D00302B2E /* Install.applescript */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -155,7 +153,7 @@
 			projectRoot = "";
 			targets = (
 				8D5B49AC048680CD000E48DA /* ___PROJECTNAME___.mailbundle */,
-				B09CFB8211CF480B0095DA83 /* Install.app */,
+				B0C20B4F11DE050000A925AB /* ___PROJECTNAME___.pkg */,
 				B028AEE211CEB818006786F7 /* ___PROJECTNAME___.dmg */,
 			);
 		};
@@ -189,20 +187,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$TARGET_BUILD_DIR\"\n\nmkdir \"tmp\"\n\nmv \"$PRODUCT_NAME.$WRAPPER_EXTENSION\" \"Install.app\" tmp/\n\nrm -f \"$PRODUCT_NAME-$CURRENT_PROJECT_VERSION.dmg\"\nhdiutil create \"$PRODUCT_NAME-$CURRENT_PROJECT_VERSION.dmg\" \\\n\t-volname \"$PRODUCT_NAME $CURRENT_PROJECT_VERSION\" \\\n\t-fs HFS+ -srcfolder \"tmp\"\n\nmv tmp/* .\n\nrmdir \"tmp\"\n";
+			shellScript = "cd \"$TARGET_BUILD_DIR\"\n\nmkdir dmg\nmv \"$PRODUCT_NAME-$CURRENT_PROJECT_VERSION.pkg\" dmg\n\n/usr/bin/hdiutil create \"$PRODUCT_NAME-$CURRENT_PROJECT_VERSION\" \\\n\t-volname \"$PRODUCT_NAME-$CURRENT_PROJECT_VERSION\" \\\n\t-fs HFS+ -ov -srcfolder \"dmg\"\n\nmv dmg/\"$PRODUCT_NAME-$CURRENT_PROJECT_VERSION.pkg\" .\nrmdir dmg\n";
 		};
-		B09CFB8111CF480B0095DA83 /* ShellScript */ = {
+		B0C20B5011DE050000A925AB /* Create Package */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Create Package";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "osacompile -o \"$TARGET_BUILD_DIR/Install.app\" \"Resources/Install.applescript\"\n";
+			shellScript = "cd \"$TARGET_BUILD_DIR\"\n\nDEST=\"$PRODUCT_NAME/Library/Mail/Bundles/\"\nmkdir -p $DEST\n\nmv $PRODUCT_NAME.$WRAPPER_EXTENSION $DEST\n\n/Developer/usr/bin/packagemaker --root \"$PRODUCT_NAME\" \\\n\t--id $PRODUCT_IDENTIFIER \\\n\t--domain user --domain system \\\n\t--target 10.5 --version \"$CURRENT_PROJECT_VERSION\" \\\n\t--out \"$PRODUCT_NAME-$CURRENT_PROJECT_VERSION.pkg\"\n\nmv $DEST/$PRODUCT_NAME.$WRAPPER_EXTENSION .\n\nrmdir -p $DEST\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -240,6 +239,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 0.1;
+				PRODUCT_IDENTIFIER = "org.example.${PRODUCT_NAME}";
 				PRODUCT_NAME = "___PROJECTNAME___";
 				WRAPPER_EXTENSION = mailbundle;
 			};
@@ -251,7 +251,7 @@
 			};
 			name = Release;
 		};
-		B09CFB8311CF480C0095DA83 /* Release */ = {
+		B0C20B5211DE050000A925AB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 			};
@@ -284,10 +284,10 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B09CFB8611CF48720095DA83 /* Build configuration list for PBXAggregateTarget "Install.app" */ = {
+		B0C20B5111DE050000A925AB /* Build configuration list for PBXAggregateTarget "___PROJECTNAME___.pkg" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B09CFB8311CF480C0095DA83 /* Release */,
+				B0C20B5211DE050000A925AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
