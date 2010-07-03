@@ -7,17 +7,6 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		B028AEE211CEB818006786F7 /* ___PROJECTNAME___.dmg */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = B028AEF511CEB866006786F7 /* Build configuration list for PBXAggregateTarget "___PROJECTNAME___.dmg" */;
-			buildPhases = (
-				B028AF0411CEB907006786F7 /* Create DMG */,
-			);
-			dependencies = (
-			);
-			name = "___PROJECTNAME___.dmg";
-			productName = dmg;
-		};
 		B0C20B4F11DE050000A925AB /* ___PROJECTNAME___.pkg */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = B0C20B5111DE050000A925AB /* Build configuration list for PBXAggregateTarget "___PROJECTNAME___.pkg" */;
@@ -171,7 +160,6 @@
 			targets = (
 				8D5B49AC048680CD000E48DA /* ___PROJECTNAME___.mailbundle */,
 				B0C20B4F11DE050000A925AB /* ___PROJECTNAME___.pkg */,
-				B028AEE211CEB818006786F7 /* ___PROJECTNAME___.dmg */,
 			);
 		};
 /* End PBXProject section */
@@ -191,20 +179,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/Developer/Tools/SetFile -a B \"$TARGET_BUILD_DIR/$PRODUCT_NAME.$WRAPPER_EXTENSION\"\n";
-		};
-		B028AF0411CEB907006786F7 /* Create DMG */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Create DMG";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cd \"$TARGET_BUILD_DIR\"\n\nmkdir dmg\nmv \"$PRODUCT_NAME-$CURRENT_PROJECT_VERSION.pkg\" dmg\n\n/usr/bin/hdiutil create \"$PRODUCT_NAME-$CURRENT_PROJECT_VERSION\" \\\n\t-volname \"$PRODUCT_NAME-$CURRENT_PROJECT_VERSION\" \\\n\t-fs HFS+ -ov -srcfolder \"dmg\"\n\nmv dmg/\"$PRODUCT_NAME-$CURRENT_PROJECT_VERSION.pkg\" .\nrmdir dmg\n";
 		};
 		B0C20B5011DE050000A925AB /* Create Package */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -262,12 +236,6 @@
 			};
 			name = Release;
 		};
-		B028AEE311CEB818006786F7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-			};
-			name = Release;
-		};
 		B0C20B5211DE050000A925AB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -289,14 +257,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB914008733D840010E9CD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B028AEF511CEB866006786F7 /* Build configuration list for PBXAggregateTarget "___PROJECTNAME___.dmg" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B028AEE311CEB818006786F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
