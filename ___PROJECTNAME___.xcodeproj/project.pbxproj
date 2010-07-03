@@ -22,6 +22,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = B0C20B5111DE050000A925AB /* Build configuration list for PBXAggregateTarget "___PROJECTNAME___.pkg" */;
 			buildPhases = (
+				B0A5824511DF77590046E155 /* CopyFiles */,
 				B0C20B5011DE050000A925AB /* Create Package */,
 			);
 			dependencies = (
@@ -35,9 +36,23 @@
 		B0442D7D11CA441300268007 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0442D7C11CA441300268007 /* AppKit.framework */; };
 		B04A135111CE5B4500E5184C /* MVMailBundle-Base.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A135011CE5B4500E5184C /* MVMailBundle-Base.m */; };
 		B096DAC311CE4C980019A5CF /* MVMailBundle-___PROJECTNAME___.m in Sources */ = {isa = PBXBuildFile; fileRef = B096DAC011CE4C980019A5CF /* MVMailBundle-___PROJECTNAME___.m */; };
+		B0A5823D11DF773C0046E155 /* postinstall in CopyFiles */ = {isa = PBXBuildFile; fileRef = B0A5823611DF771F0046E155 /* postinstall */; };
 		B0BE0F2011CA30E000E58E55 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 089C1672FE841209C02AAC07 /* Foundation.framework */; };
 		B0FCD88111CE55C20093744D /* Message.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0FCD88011CE55C20093744D /* Message.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B0A5824511DF77590046E155 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Scripts;
+			dstSubfolderSpec = 16;
+			files = (
+				B0A5823D11DF773C0046E155 /* postinstall in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -46,6 +61,7 @@
 		B04A135011CE5B4500E5184C /* MVMailBundle-Base.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MVMailBundle-Base.m"; sourceTree = "<group>"; };
 		B096DABF11CE4C980019A5CF /* MVMailBundle-___PROJECTNAME___.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MVMailBundle-___PROJECTNAME___.h"; sourceTree = "<group>"; };
 		B096DAC011CE4C980019A5CF /* MVMailBundle-___PROJECTNAME___.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MVMailBundle-___PROJECTNAME___.m"; sourceTree = "<group>"; };
+		B0A5823611DF771F0046E155 /* postinstall */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = postinstall; path = Resources/postinstall; sourceTree = "<group>"; };
 		B0C163C911CB82BF00B6B512 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		B0E275B311CE4CC5000D2AAD /* ___PROJECTNAME___.mailbundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "___PROJECTNAME___.mailbundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0FCD88011CE55C20093744D /* Message.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Message.framework; path = Frameworks/Message.framework; sourceTree = "<group>"; };
@@ -91,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				B0FCD8B611CE578D0093744D /* Info.plist */,
+				B0A5823611DF771F0046E155 /* postinstall */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -201,7 +218,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$TARGET_BUILD_DIR\"\n\nDEST=\"$PRODUCT_NAME/Library/Mail/Bundles/\"\nmkdir -p $DEST\n\nmv $PRODUCT_NAME.$WRAPPER_EXTENSION $DEST\n\n/Developer/usr/bin/packagemaker --root \"$PRODUCT_NAME\" \\\n\t--id $PRODUCT_IDENTIFIER \\\n\t--domain user --domain system \\\n\t--target 10.5 --version \"$CURRENT_PROJECT_VERSION\" \\\n\t--out \"$PRODUCT_NAME-$CURRENT_PROJECT_VERSION.pkg\"\n\nmv $DEST/$PRODUCT_NAME.$WRAPPER_EXTENSION .\n\nrmdir -p $DEST\n";
+			shellScript = "cd \"$TARGET_BUILD_DIR\"\n\nMB=\"$PRODUCT_NAME.$WRAPPER_EXTENSION\"\nPKG=\"$PRODUCT_NAME-$CURRENT_PROJECT_VERSION.pkg\"\nDEST=\"$PRODUCT_NAME/Library/Mail/Bundles/\"\nmkdir -p $DEST\n\nmv $MB $DEST\n\n/Developer/usr/bin/packagemaker --root \"$PRODUCT_NAME\" \\\n\t--id $PRODUCT_IDENTIFIER \\\n\t--domain user --scripts \"Scripts\" \\\n\t--target 10.5 --version \"$CURRENT_PROJECT_VERSION\" \\\n\t--out $PKG\n\nmv $DEST/$MB .\n\nrmdir -p $DEST\n\nrm Scripts/postinstall\nrmdir Scripts\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
