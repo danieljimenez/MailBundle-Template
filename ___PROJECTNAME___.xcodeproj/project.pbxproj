@@ -218,7 +218,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$TARGET_BUILD_DIR\"\n\nMB=\"$PRODUCT_NAME.$WRAPPER_EXTENSION\"\nPKG=\"$PRODUCT_NAME-$CURRENT_PROJECT_VERSION.pkg\"\nDEST=\"$PRODUCT_NAME/Library/Mail/Bundles/\"\nmkdir -p $DEST\n\nmv $MB $DEST\n\n/Developer/usr/bin/packagemaker --root \"$PRODUCT_NAME\" \\\n\t--id $PRODUCT_IDENTIFIER \\\n\t--domain user --scripts \"Scripts\" \\\n\t--target 10.5 --version \"$CURRENT_PROJECT_VERSION\" \\\n\t--out $PKG\n\nmv $DEST/$MB .\n\nrmdir -p $DEST\n\nrm Scripts/postinstall\nrmdir Scripts\n";
+			shellScript = "cd \"$TARGET_BUILD_DIR\"\n\nMB=\"$PRODUCT_NAME.$WRAPPER_EXTENSION\"\nPKG=\"$PRODUCT_NAME-$CURRENT_PROJECT_VERSION.pkg\"\nDEST=\"root/Library/Mail/Bundles/\"\nmkdir -p $DEST\n\nmv $MB $DEST\n\n/Developer/usr/bin/packagemaker --root root \\\n\t--id \"$PRODUCT_IDENTIFIER\" \\\n\t--title \"$PRODUCT_NAME\" \\\n\t--domain user --scripts \"Scripts\" \\\n\t--target 10.5 --version \"$CURRENT_PROJECT_VERSION\" \\\n\t--out $PKG\n\nmv $DEST/$MB .\n\nrmdir -p $DEST\n\nrm Scripts/postinstall\nrmdir Scripts\n\n\npkgutil --expand $PKG tmp\nsed -i '' 's/ auth=\"[Rr]oot\"//' tmp/Distribution tmp/*.pkg/PackageInfo\npkgutil --flatten tmp $PKG\nrm -rf tmp/\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
