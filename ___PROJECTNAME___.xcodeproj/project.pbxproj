@@ -23,6 +23,8 @@
 
 /* Begin PBXBuildFile section */
 		B0442D7D11CA441300268007 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0442D7C11CA441300268007 /* AppKit.framework */; };
+		B07F310F11E0D65300316145 /* Swizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = B07F310E11E0D65300316145 /* Swizzler.m */; };
+		B07F311211E0D65D00316145 /* MessageViewer-___PROJECTNAME___.m in Sources */ = {isa = PBXBuildFile; fileRef = B07F311111E0D65D00316145 /* MessageViewer-___PROJECTNAME___.m */; };
 		B096DAC311CE4C980019A5CF /* MVMailBundle-___PROJECTNAME___.m in Sources */ = {isa = PBXBuildFile; fileRef = B096DAC011CE4C980019A5CF /* MVMailBundle-___PROJECTNAME___.m */; };
 		B0A5823D11DF773C0046E155 /* postinstall in CopyFiles */ = {isa = PBXBuildFile; fileRef = B0A5823611DF771F0046E155 /* postinstall */; };
 		B0BE0F2011CA30E000E58E55 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 089C1672FE841209C02AAC07 /* Foundation.framework */; };
@@ -45,6 +47,10 @@
 /* Begin PBXFileReference section */
 		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		B0442D7C11CA441300268007 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		B07F310D11E0D65300316145 /* Swizzler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Swizzler.h; sourceTree = "<group>"; };
+		B07F310E11E0D65300316145 /* Swizzler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Swizzler.m; sourceTree = "<group>"; };
+		B07F311011E0D65D00316145 /* MessageViewer-___PROJECTNAME___.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MessageViewer-___PROJECTNAME___.h"; sourceTree = "<group>"; };
+		B07F311111E0D65D00316145 /* MessageViewer-___PROJECTNAME___.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MessageViewer-___PROJECTNAME___.m"; sourceTree = "<group>"; };
 		B096DABF11CE4C980019A5CF /* MVMailBundle-___PROJECTNAME___.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MVMailBundle-___PROJECTNAME___.h"; sourceTree = "<group>"; };
 		B096DAC011CE4C980019A5CF /* MVMailBundle-___PROJECTNAME___.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MVMailBundle-___PROJECTNAME___.m"; sourceTree = "<group>"; };
 		B0A5823611DF771F0046E155 /* postinstall */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = postinstall; path = Resources/postinstall; sourceTree = "<group>"; };
@@ -103,6 +109,10 @@
 			children = (
 				B096DABF11CE4C980019A5CF /* MVMailBundle-___PROJECTNAME___.h */,
 				B096DAC011CE4C980019A5CF /* MVMailBundle-___PROJECTNAME___.m */,
+				B07F311011E0D65D00316145 /* MessageViewer-___PROJECTNAME___.h */,
+				B07F311111E0D65D00316145 /* MessageViewer-___PROJECTNAME___.m */,
+				B07F310D11E0D65300316145 /* Swizzler.h */,
+				B07F310E11E0D65300316145 /* Swizzler.m */,
 				B0C163C911CB82BF00B6B512 /* Prefix.pch */,
 			);
 			path = Classes;
@@ -197,6 +207,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B096DAC311CE4C980019A5CF /* MVMailBundle-___PROJECTNAME___.m in Sources */,
+				B07F310F11E0D65300316145 /* Swizzler.m in Sources */,
+				B07F311211E0D65D00316145 /* MessageViewer-___PROJECTNAME___.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

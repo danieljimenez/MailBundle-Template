@@ -10,8 +10,3 @@ Installation:
 - Download and extract the template.
 - Move the entire folder to `/Developer/Library/Xcode/Project Templates/Application Plug-In/`.
 - Create a new Xcode project based on this template.
-
-
-Todo:
------
-- Default swizzling stuff

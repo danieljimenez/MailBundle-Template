@@ -1,5 +1,7 @@
 @interface MVMailBundle___PROJECTNAME___ : NSObject
 
+- (void) swizzle;
+
 @end
 
 
