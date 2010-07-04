@@ -23,7 +23,6 @@
 
 /* Begin PBXBuildFile section */
 		B0442D7D11CA441300268007 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0442D7C11CA441300268007 /* AppKit.framework */; };
-		B04A135111CE5B4500E5184C /* MVMailBundle-Base.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A135011CE5B4500E5184C /* MVMailBundle-Base.m */; };
 		B096DAC311CE4C980019A5CF /* MVMailBundle-___PROJECTNAME___.m in Sources */ = {isa = PBXBuildFile; fileRef = B096DAC011CE4C980019A5CF /* MVMailBundle-___PROJECTNAME___.m */; };
 		B0A5823D11DF773C0046E155 /* postinstall in CopyFiles */ = {isa = PBXBuildFile; fileRef = B0A5823611DF771F0046E155 /* postinstall */; };
 		B0BE0F2011CA30E000E58E55 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 089C1672FE841209C02AAC07 /* Foundation.framework */; };
@@ -46,8 +45,6 @@
 /* Begin PBXFileReference section */
 		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		B0442D7C11CA441300268007 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
-		B04A134F11CE5B4500E5184C /* MVMailBundle-Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MVMailBundle-Base.h"; sourceTree = "<group>"; };
-		B04A135011CE5B4500E5184C /* MVMailBundle-Base.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MVMailBundle-Base.m"; sourceTree = "<group>"; };
 		B096DABF11CE4C980019A5CF /* MVMailBundle-___PROJECTNAME___.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MVMailBundle-___PROJECTNAME___.h"; sourceTree = "<group>"; };
 		B096DAC011CE4C980019A5CF /* MVMailBundle-___PROJECTNAME___.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MVMailBundle-___PROJECTNAME___.m"; sourceTree = "<group>"; };
 		B0A5823611DF771F0046E155 /* postinstall */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = postinstall; path = Resources/postinstall; sourceTree = "<group>"; };
@@ -106,8 +103,6 @@
 			children = (
 				B096DABF11CE4C980019A5CF /* MVMailBundle-___PROJECTNAME___.h */,
 				B096DAC011CE4C980019A5CF /* MVMailBundle-___PROJECTNAME___.m */,
-				B04A134F11CE5B4500E5184C /* MVMailBundle-Base.h */,
-				B04A135011CE5B4500E5184C /* MVMailBundle-Base.m */,
 				B0C163C911CB82BF00B6B512 /* Prefix.pch */,
 			);
 			path = Classes;
@@ -202,7 +197,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B096DAC311CE4C980019A5CF /* MVMailBundle-___PROJECTNAME___.m in Sources */,
-				B04A135111CE5B4500E5184C /* MVMailBundle-Base.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,6 +1,10 @@
-#import "MVMailBundle-Base.h"
+@interface MVMailBundle___PROJECTNAME___ : NSObject
+
+@end
 
 
-@interface MVMailBundle___PROJECTNAME___ : MVMailBundleBase
+@interface NSObject (MVMailBundle)
+
++ (void) registerBundle;
 
 @end
