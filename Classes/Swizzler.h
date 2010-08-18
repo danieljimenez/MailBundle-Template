@@ -1,6 +1,6 @@
-@interface Swizzler : NSObject
+@interface XYZ_Swizzler : NSObject
 
 + (void) extendClass: (Class) aClass withClass: (Class) bClass;
-+ (void) exchangeSelectors: (Class) c aSel:(SEL) aSel bSel: (SEL) bSel;
++ (void) swizzleSelector: (SEL) aSel inClass: (Class) aClass;
 
 @end

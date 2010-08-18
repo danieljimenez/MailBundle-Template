@@ -1,11 +1,17 @@
-#import "MessageViewer-___PROJECTNAME___.h"
+#import "MessageViewer.h"
+#import "Swizzler.h"
 
 
-@implementation MessageViewer___PROJECTNAME___
+@implementation XYZ_MessageViewer
 
-- (BOOL) transferSelectedMessagesToMailbox_: (MailboxUid*) arg1 deleteOriginals: (BOOL) arg2 {
++ (void) load {
+	[XYZ_Swizzler extendClass: NSClassFromString(@"MessageViewer")
+					withClass: NSClassFromString(@"XYZ_MessageViewer")];
+}
+
+- (void) XYZ_showComposeWindow: (id) arg1 {
 	NSLog(@"Swizzled!");
-	return [self transferSelectedMessagesToMailbox_: arg1 deleteOriginals: arg2];
+	return [self XYZ_showComposeWindow: arg1];
 }
 
 @end

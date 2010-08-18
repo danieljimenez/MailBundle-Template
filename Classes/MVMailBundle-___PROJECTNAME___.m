@@ -1,31 +1,16 @@
-#import "MVMailBundle-___PROJECTNAME___.h"
-#import "MessageViewer-___PROJECTNAME___.h"
-#import "Swizzler.h"
+#import "MVMailBundle.h"
 
-#define MVMailBundle NSClassFromString(@"MVMailBundle")
-#define MessageViewer NSClassFromString(@"MessageViewer")
-
-
-@implementation MVMailBundle___PROJECTNAME___
+@implementation XYZ_MVMailBundle
 
 + (void) initialize {
-    class_setSuperclass([self class], MVMailBundle);
+    class_setSuperclass([self class], NSClassFromString(@"MVMailBundle"));
 	[super initialize];
 	[self registerBundle];
 }
 
 - (id) init {
 	NSLog(@"Loading ___PROJECTNAME___");
-	[self swizzle];
 	return self;
-}
-
-- (void) swizzle {
-	[Swizzler extendClass:MessageViewer
-				withClass:[MessageViewer___PROJECTNAME___ class]];
-	[Swizzler exchangeSelectors:MessageViewer
-						   aSel:@selector(transferSelectedMessagesToMailbox:deleteOriginals:)
-						   bSel:@selector(transferSelectedMessagesToMailbox_:deleteOriginals:)];
 }
 
 @end
