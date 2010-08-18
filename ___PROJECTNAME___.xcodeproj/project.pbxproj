@@ -218,24 +218,21 @@
 		1DEB913C08733D840010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					i386,
-					x86_64,
-				);
-				BUNDLE_LOADER = /Applications/Mail.app/Contents/MacOS/Mail;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Frameworks\"",
-				);
-				GCC_PREFIX_HEADER = Classes/Prefix.pch;
-				INFOPLIST_FILE = Resources/Info.plist;
 			};
 			name = Release;
 		};
 		1DEB914008733D840010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					i386,
+					x86_64,
+				);
+				BUNDLE_LOADER = /Applications/Mail.app/Contents/MacOS/Mail;
 				CURRENT_PROJECT_VERSION = 0.0.0;
+				FRAMEWORK_SEARCH_PATHS = Frameworks;
+				GCC_PREFIX_HEADER = Classes/Prefix.pch;
+				INFOPLIST_FILE = Resources/Info.plist;
 				PRODUCT_IDENTIFIER = "org.example.${PRODUCT_NAME}";
 				PRODUCT_NAME = "___PROJECTNAME___";
 				WRAPPER_EXTENSION = mailbundle;
