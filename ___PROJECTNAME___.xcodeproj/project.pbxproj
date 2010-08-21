@@ -232,7 +232,9 @@
 				CURRENT_PROJECT_VERSION = 0.0.0;
 				FRAMEWORK_SEARCH_PATHS = Frameworks;
 				GCC_PREFIX_HEADER = Classes/Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Resources/Info.plist;
+				OTHER_CFLAGS = "-Wno-deprecated-declarations";
 				PRODUCT_IDENTIFIER = "org.example.${PRODUCT_NAME}";
 				PRODUCT_NAME = "___PROJECTNAME___";
 				WRAPPER_EXTENSION = mailbundle;
