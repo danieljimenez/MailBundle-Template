@@ -10,8 +10,8 @@
 }
 
 - (void) XYZ_showComposeWindow: (id) arg1 {
-	NSLog(@"Swizzled!");
-	return [self XYZ_showComposeWindow: arg1];
+    [self XYZ_showComposeWindow: arg1];
+    NSLog(@"Swizzled");
 }
 
 @end

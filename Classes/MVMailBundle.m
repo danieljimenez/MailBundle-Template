@@ -7,11 +7,11 @@
 + (void) initialize {
     [XYZ_Swizzler setSuperclassOf: @"XYZ_MVMailBundle"
                           toClass: @"MVMailBundle"];
-	[self registerBundle];
+    [self registerBundle];
 }
 
 - (id) init {
-	NSLog(@"Loading ___PROJECTNAME___");
+	NSLog(@"Loading MailBundle");
 	return self;
 }
 
