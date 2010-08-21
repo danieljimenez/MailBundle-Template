@@ -1,10 +1,12 @@
 #import "MVMailBundle.h"
+#import "Swizzler.h"
+
 
 @implementation XYZ_MVMailBundle
 
 + (void) initialize {
-    class_setSuperclass([self class], NSClassFromString(@"MVMailBundle"));
-	[super initialize];
+    [XYZ_Swizzler setSuperclassOf: @"XYZ_MVMailBundle"
+                          toClass: @"MVMailBundle"];
 	[self registerBundle];
 }
 

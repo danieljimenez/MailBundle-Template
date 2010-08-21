@@ -5,8 +5,8 @@
 @implementation XYZ_MessageViewer
 
 + (void) load {
-	[XYZ_Swizzler extendClass: NSClassFromString(@"MessageViewer")
-					withClass: NSClassFromString(@"XYZ_MessageViewer")];
+    [XYZ_Swizzler extendClass: @"MessageViewer"
+                    withClass: @"XYZ_MessageViewer"];
 }
 
 - (void) XYZ_showComposeWindow: (id) arg1 {

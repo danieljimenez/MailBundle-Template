@@ -1,40 +1,45 @@
-#import <objc/objc-class.h>
+#import <objc/runtime.h>
 #import "Swizzler.h"
 
-#define SWIZZLE_PREFIX @"XYZ_"
+#define SWIZZLE_PREFIX_STRING @"XYZ_"
+#define SWIZZLE_PREFIX_LENGTH 4
 
 
 @implementation XYZ_Swizzler
 
++ (void) setSuperclassOf: (NSString*) aStr toClass: (NSString*) bStr {
+    Class aClass = NSClassFromString(aStr);
+    Class bClass = NSClassFromString(bStr);
 
-+ (void) extendClass: (Class) aClass withClass: (Class) bClass {
-	uint methodCount, i;
-
-	Method* classMethods = class_copyMethodList(bClass, &methodCount);
-
-	for(i = 0; i < methodCount; i++) {
-		SEL aSelector = method_getName((Method) classMethods[i]);
-		Method aMethod = class_getInstanceMethod(bClass, aSelector);
-		IMP anIMP = method_getImplementation(aMethod);
-
-		class_addMethod(aClass, aSelector, anIMP, method_getTypeEncoding(aMethod));
-
-		if ([NSStringFromSelector(aSelector) hasPrefix: SWIZZLE_PREFIX]) {
-			[self swizzleSelector:aSelector inClass:aClass];
-		}
-	}
-
-	free(classMethods);
+    class_setSuperclass(aClass, bClass);
 }
 
++ (void) extendClass: (NSString*) aStr withClass: (NSString*) bStr {
+    Class aClass = NSClassFromString(aStr);
+    Class bClass = NSClassFromString(bStr);
 
-+ (void) swizzleSelector: (SEL) aSel inClass: (Class) aClass {
-	SEL bSel = NSSelectorFromString([NSStringFromSelector(aSel) substringFromIndex: [SWIZZLE_PREFIX length]]);
-	Method aMethod = class_getInstanceMethod(aClass, aSel);
-	Method bMethod = class_getInstanceMethod(aClass, bSel);
+    uint methodCount, i;
+    Method* bMethods = class_copyMethodList(bClass, &methodCount);
 
-	method_exchangeImplementations(aMethod, bMethod);
+    for (i = 0; i < methodCount; i++) {
+        Method bMethod = bMethods[i];
+        SEL bSel = method_getName(bMethod);
+
+        class_addMethod(aClass, bSel,
+                        method_getImplementation(bMethod),
+                        method_getTypeEncoding(bMethod));
+
+        bStr = NSStringFromSelector(bSel);
+
+        if ([bStr hasPrefix: SWIZZLE_PREFIX_STRING]) {
+            aStr = [bStr substringFromIndex: SWIZZLE_PREFIX_LENGTH];
+            SEL aSel = NSSelectorFromString(aStr);
+
+            method_exchangeImplementations(class_getInstanceMethod(aClass, aSel),
+                                           class_getInstanceMethod(aClass, bSel));
+        }
+    }
+    free(bMethods);
 }
-
 
 @end
