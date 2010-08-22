@@ -14,6 +14,8 @@
 	<string>${CURRENT_PROJECT_VERSION}</string>
 	<key>SupportedPluginCompatibilityUUIDs</key>
 	<array>
+		<string>BDD81F4D-6881-4A8D-94A7-E67410089EEB</string>
+		<string>857A142A-AB81-4D99-BECC-D1B55A86D94E</string>
 		<string>B842F7D0-4D81-4DDF-A672-129CA5B32D57</string>
 		<string>E71BD599-351A-42C5-9B63-EA5C47F7CE8E</string>
 		<string>225E0A48-2CDB-44A6-8D99-A9BB8AF6BA04</string>
